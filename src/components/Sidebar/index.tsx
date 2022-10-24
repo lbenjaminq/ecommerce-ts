@@ -13,6 +13,7 @@ export const Sidebar: React.FC<Props> = ({show, handleShow}) => {
       placement="end"
       show={show}
       onHide={handleShow}
+      scroll={true}
     >
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Offcanvas</Offcanvas.Title>

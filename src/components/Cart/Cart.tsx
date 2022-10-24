@@ -1,20 +1,29 @@
-import React,{ useContext } from 'react'
-import { CartContext } from '../../context/CartContext'
-import { Item } from './Item'
+import React, { useContext } from "react";
+import { Button, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
+import { Footer } from "./Footer";
+import { Item } from "./Item";
 
 const Cart = () => {
+  const { cartItems } = useContext(CartContext);
+  const navigate = useNavigate()
 
-  const { cartItems } = useContext(CartContext)
+  if (!cartItems.length) return <h5>No hay ningun producto</h5>;
 
   return (
-    <div>
-      {
-        cartItems?.map((product)=>(
-          <Item item={product} />
-        ))
-      }
-    </div>
-  )
-}
+    <Container>
+      <div style={{borderBottom:"1px solid #a5a5a5",marginBottom:"4%"}}>
+        {cartItems?.map((product) => (
+          <Item key={product.id} item={product} />
+        ))}
+      </div>
+      <Footer />
+      <Button style={{width:"100%",marginTop:"4%"}} onClick={() => navigate("checkout")}>
+        Proceder con el pago
+      </Button>
+    </Container>
+  );
+};
 
-export default Cart
+export default Cart;

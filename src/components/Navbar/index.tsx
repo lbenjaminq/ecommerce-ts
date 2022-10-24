@@ -1,10 +1,14 @@
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React,{ useState } from "react";
+import React,{ useContext, useState } from "react";
 import { Navbar, Container, Nav, Badge } from "react-bootstrap";
+import { CartContext } from "../../context/CartContext";
+import { getProductTotal } from "../../helpers/calculate";
 import { Props } from "../Navigation";
 
 export const NavbarComponent: React.FC<Props> = ({handleShow}) => {
+
+  const { cartItems } = useContext(CartContext)
 
   return (
     <Navbar bg="light" expand="lg">
@@ -22,7 +26,7 @@ export const NavbarComponent: React.FC<Props> = ({handleShow}) => {
           style={{ cursor: "pointer" }}
           onClick={handleShow}
         />
-        <Badge bg="secondary" >8</Badge>
+        <Badge bg="secondary">{getProductTotal(cartItems)}</Badge>
       </Container>
     </Navbar>
   );

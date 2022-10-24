@@ -1,0 +1,35 @@
+.container{
+  width: 400px;
+}
+.order{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order h2 {
+  color: rgb(225, 90, 0);
+}
+.order span{
+  font-size: 20px;
+}
+.listProducts{
+  border: 1px solid rgb(200, 202, 207);
+  list-style: none;
+  padding-left: 0%;
+}
+.itemProduct{
+  border: 1px solid rgb(207, 208, 212);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.itemProduct span{
+  font-size: 0.8rem;
+  opacity: .8;
+}
+.totalProduct{
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 2%;
+  border-bottom:2px solid rgb(225, 90, 0);
+}

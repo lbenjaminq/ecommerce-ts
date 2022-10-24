@@ -19,7 +19,7 @@ export type CartItem = {
   id?:number;
   title:string;
   image?:string;
-  price:string;
+  price:number;
   amount:number;
 }
 
@@ -27,7 +27,7 @@ export type CartItem = {
 //This is the type of the arguments that receives the reducer
 export type CartActionReducer = {
   payload:any;
-  action: 'ADD' | 'REMOVE' | 'REMOVE_ALL' | 'CLEAR'
+  type: 'ADD' | 'REMOVE' | 'REMOVE_ALL' | 'CLEAR'
 }
 
 //Este es el type del Context, el contexto provee un array de los productos que se agregan al carrito y la funcion del dispatch para cambiar el stado
