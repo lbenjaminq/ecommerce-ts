@@ -1,5 +1,6 @@
 import React from "react";
 import { Offcanvas } from "react-bootstrap";
+import Cart from "../Cart/Cart";
 
 type Props = {
   show:boolean
@@ -17,8 +18,7 @@ export const Sidebar: React.FC<Props> = ({show, handleShow}) => {
         <Offcanvas.Title>Offcanvas</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-        Some text as placeholder. In real life you can have the elements you
-        have chosen. Like, text, images, lists, etc.
+        <Cart/>
       </Offcanvas.Body>
     </Offcanvas>
   );

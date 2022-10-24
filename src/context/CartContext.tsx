@@ -11,7 +11,7 @@ export const CartContext = createContext<CartContextType>(InitialState)
 
 export const CartProvider: React.FC<{ children: JSX.Element }> = ({ children }) => {
 
-  const [cartItems, dispatch] = useReducer(CartReducer, InitialState.cartItems)
+  const [cartItems, dispatch] = useReducer(CartReducer, InitialState.cartItems) 
 
   const value={
     cartItems,
@@ -24,3 +24,7 @@ export const CartProvider: React.FC<{ children: JSX.Element }> = ({ children }) 
     </CartContext.Provider>
   )
 }
+
+// CartItems and dispatch will be provided here to the components (children)
+// CartItems= Is an array of products that are added to the cart
+// dispatch = Is a function for to change the state of the reducer 
