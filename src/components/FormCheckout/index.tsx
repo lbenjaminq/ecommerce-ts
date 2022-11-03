@@ -18,10 +18,10 @@ const initialState = {
 export const FormCheckout = () => {
   const [values, setValues] = useState<UserValue>(initialState);
   const { cartItems, dispatch } = useContext(CartContext);
-
+//HACER EL USEFORM 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log("Sending to Server");
+    
     setValues(initialState);
     dispatch({
       payload:[],

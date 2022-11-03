@@ -37,3 +37,15 @@ export type CartContextType = {
   dispatch: React.Dispatch<CartActionReducer>
 }
 
+export type Customer = {
+  name: string;
+  lastName: string;
+  email: string;
+  address: string;
+}
+
+
+export type Order = {
+  customer: Customer,
+  order_details : CartItem[]
+}
