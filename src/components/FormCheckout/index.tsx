@@ -1,12 +1,9 @@
 import React, { FormEvent, useContext, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { CartContext } from "../../context/CartContext";
-
-type UserValue = {
-  name: string;
-  lastName: string;
-  email: string;
-  address: string;
-};
+import postData from "../../helpers/postData";
+import useForm from "../../hook/useForm";
+import { Customer, Order } from "../../types/type";
 
 const initialState = {
   name: "",
@@ -15,28 +12,45 @@ const initialState = {
   address: "",
 };
 
+const notify = (msj: string) => toast(msj);
+
 export const FormCheckout = () => {
-  const [values, setValues] = useState<UserValue>(initialState);
   const { cartItems, dispatch } = useContext(CartContext);
-//HACER EL USEFORM 
-  const handleSubmit = (e: FormEvent) => {
+  const { name, lastName, email, address, handleChange, resetValues } =
+    useForm<Customer>(initialState);
+  const [showToast, setShowToast] = useState(false);
+  //HACER EL USEFORM
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
-    setValues(initialState);
-    dispatch({
-      payload:[],
-      type:"CLEAR"
-    })
-  };
+    setShowToast(true);
+    const orderDetails = cartItems.map(({ id, image, ...item }) => item);
+    if (orderDetails.length > 0) {
+      const order: Order = {
+        customer: {
+          name,
+          lastName,
+          email,
+          address,
+        },
+        order_details: orderDetails,
+      };
+      const fetchApi = await postData(order);
+      if (!fetchApi.ok) {
+        notify("No se pudo procesar");
+      } else {
+        notify("Orden realizada");
+        resetValues();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    });
+        dispatch({
+          payload: [],
+          type: "CLEAR",
+        });
+      }
+    } else {
+      notify("No se puede procesar orden sin compras");
+    }
+    setTimeout(()=> setShowToast(false),5000)
   };
-
-  console.log(values);
 
   return (
     <div className="col-md-7 col-lg-4">
@@ -54,7 +68,7 @@ export const FormCheckout = () => {
               id="name"
               placeholder="Name.."
               onChange={handleChange}
-              value={values.name}
+              value={name}
             />
           </div>
           <div>
@@ -68,7 +82,7 @@ export const FormCheckout = () => {
               id="lastName"
               placeholder="LastName.."
               onChange={handleChange}
-              value={values.lastName}
+              value={lastName}
             />
           </div>
           <div>
@@ -82,7 +96,7 @@ export const FormCheckout = () => {
               id="email"
               placeholder="Email.."
               onChange={handleChange}
-              value={values.email}
+              value={email}
             />
           </div>
           <div>
@@ -96,7 +110,7 @@ export const FormCheckout = () => {
               id="address"
               placeholder="Address.."
               onChange={handleChange}
-              value={values.address}
+              value={address}
             />
           </div>
         </div>
@@ -104,6 +118,13 @@ export const FormCheckout = () => {
         <button className="w-100 btn btn-primary" type="submit">
           Procesar Orden
         </button>
+        {showToast && (
+          <Toaster
+            toastOptions={{
+              position: "top-right",
+            }}
+          />
+        )}
       </form>
     </div>
   );
