@@ -20,7 +20,7 @@ const ListProducts = () => {
   if(isLoading) return <h5>Cargando</h5>
 
   return (
-    <Container fluid>
+    <Container>
       <Row xs={1} md={2} lg={4}>
         {
           products.map((product)=>(

@@ -1,6 +1,9 @@
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Button, Card, Stack } from "react-bootstrap";
 import { DataItem } from "../../../types/type";
+import style from "./Product.module.css"
 
 type Props = {
   product: DataItem;
@@ -15,7 +18,14 @@ const Product: React.FC<Props> = ({ product, handleAddToCart }) => {
   };
 
   return (
-    <Card style={{ width: "18rem", height: "400px", textAlign: "center" }}>
+    <Card
+      style={{
+        width: "18rem",
+        height: "400px",
+        textAlign: "center",
+        borderRadius: "20px",
+      }}
+    >
       <Card.Img
         variant="top"
         src={product.image}
@@ -32,14 +42,28 @@ const Product: React.FC<Props> = ({ product, handleAddToCart }) => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
         <Card.Title>{customInfo(product.title, 40)}</Card.Title>
         <Card.Text>{customInfo(product.description, 60)}</Card.Text>
-        <Card.Text>Precio: {product.price}</Card.Text>
-        <Button onClick={() => handleAddToCart(product)} variant="primary">
-          Agregar al carrito
-        </Button>
+        <Card.Footer
+          style={{
+            display: "flex",
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "space-between",
+            fontFamily: "JetBrains Mono",
+          }}
+        >
+          <strong>Precio: ${product.price} USD</strong>
+          <button
+            onClick={() => handleAddToCart(product)}
+            className={style.Button}
+          >
+            <FontAwesomeIcon icon={faCirclePlus} size="2x" color="#ff8c00" />
+          </button>
+        </Card.Footer>
       </Card.Body>
     </Card>
   );

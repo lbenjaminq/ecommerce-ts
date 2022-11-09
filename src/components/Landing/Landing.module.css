@@ -1,0 +1,143 @@
+.container{
+  width: 100%;
+  height: calc(100vh - 70px);
+  display: flex;
+  justify-content: space-between;
+  color: black;
+}
+
+.image{
+  width: 100%;
+  height: calc(100vh - 70px);
+  background-image: url("../../assets/BG.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: opacity(0.2);
+  position: absolute;
+}
+
+.content{
+  width: 70%;  
+  background-color: #f9d6ab;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.subcontent{
+  height: fit-content;
+  width: 60%;
+}
+
+.subcontent h4{
+  margin: 4% 0;
+}
+
+
+.title{
+  font-size: 6rem;
+  font-family: Archivo Black;
+  height: fit-content;
+  width: 100%;
+}
+
+.contImage{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9d6ab;
+}
+
+.productImage{
+  width: 500px;
+  animation: myAnim 2s ease 0s 1 normal forwards;
+}
+
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: translateX(150px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@media screen and (max-width:1400px){
+  .title{
+    font-size: 4rem;
+  }
+  .productImage{
+    width: 350px;
+  }
+}
+
+@media screen and (max-width:1000px){
+  .title{
+    font-size: 3rem;
+  }
+  .productImage{
+    width: 250px;
+  }
+}
+
+@media screen and (max-width:800px){
+  .title{
+    font-size: 2.5rem;
+  }
+  .productImage{
+    width: 250px;
+  }
+  .subcontent h4{
+    font-size: 1rem;
+  }
+  .subcontent p{
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width:600px){
+  .content{
+    width: 100%;
+  }
+  .subcontent{
+    width: 80%;
+    text-align: center;
+  }
+  .contImage{
+    display: none;
+  }
+  .title{
+    font-size: 3rem;
+  }
+  .productImage{
+    display: none;
+  }
+  .subcontent h4{
+    font-size: 1rem;
+  }
+  .subcontent p{
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width:600px){
+  .title{
+    font-size: 2.5rem;
+  }
+  .subcontent h4{
+    font-size: 1.2rem;
+  }
+  .subcontent p{
+    font-size: 1rem;
+  }
+}
+
+
+/* // font-family: 'Archivo Black', sans-serif;
+// font-family: 'JetBrains Mono', monospace; */
