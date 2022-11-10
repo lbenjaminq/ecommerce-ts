@@ -1,9 +1,9 @@
-import React,{useContext} from "react";
+import React,{useContext, useState} from "react";
 import { Col, Row } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { CartContext } from "../../context/CartContext";
 import { useFetch } from "../../hook/useFetch";
-import { DataItem } from "../../types/type";
+import { CartItem, DataItem } from "../../types/type";
 import Product from "./Product/Product";
 
 const ListProducts = () => {
@@ -20,7 +20,7 @@ const ListProducts = () => {
   if(isLoading) return <h5>Cargando</h5>
 
   return (
-    <Container>
+    <Container style={{marginBottom:"5%",marginTop:"5%"}}>
       <Row xs={1} md={2} lg={4}>
         {
           products.map((product)=>(

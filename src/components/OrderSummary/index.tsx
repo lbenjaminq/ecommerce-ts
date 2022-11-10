@@ -16,11 +16,11 @@ export const OrderSummary = () => {
       <ul className={style.listProducts}>
         { cartItems?.map((item)=> (
           <li key={item.id} className={style.itemProduct}>
-            <div>
+            <div className={style.content}>
               <h4>{item.title}</h4>
-              <span>Cantidad: {item.amount}</span>
+              <strong>Amount: {item.amount}</strong>
             </div>
-            <span>${item.price}</span>
+            <strong>${item.price}</strong>
           </li>
         )) }
       </ul>

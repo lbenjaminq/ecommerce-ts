@@ -5,12 +5,12 @@ import style from "./index.module.css";
 
 export const Checkout: React.FC<{}> = () => {
   return (
-    <Container>
+    <Container style={{fontFamily:'JetBrains Mono'}}>
       <div className={style.title}>
-        <h2>Último paso</h2>
-        <span>Para finalizar tu compra,completa el siguiente formulario</span>
+        <h1>Last step</h1>
+        <span>To finalize your purchase, complete the following form</span>
       </div>
-      <div style={{width:"100%",display:"flex",justifyContent:"space-around"}}>
+      <div className={style.content}>
         <OrderSummary />
         <FormCheckout /> 
       </div>

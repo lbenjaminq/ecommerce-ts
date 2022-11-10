@@ -16,7 +16,7 @@ export const Sidebar: React.FC<Props> = ({show, handleShow}) => {
       scroll={true}
     >
       <Offcanvas.Header closeButton>
-        <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        <Offcanvas.Title>Products</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
         <Cart/>

@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { getProductTotal } from "../../helpers/calculate";
 import { Props } from "../Navigation";
-import { SearchBar } from "../SearchBar";
 import style from "./index.module.css";
 
 export const NavbarComponent: React.FC<Props> = ({ handleShow }) => {

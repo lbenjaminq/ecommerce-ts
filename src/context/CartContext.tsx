@@ -1,31 +1,28 @@
-import { createContext, useReducer } from "react"
-import { CartReducer } from "../reducer/CartReducer"
-import { CartContextType } from "../types/type"
-import { CartItem } from "../types/type"
+import { createContext, useReducer, useState } from "react";
+import { CartReducer } from "../reducer/CartReducer";
+import { CartContextType } from "../types/type";
+import { CartItem } from "../types/type";
 
 const InitialState = {
   cartItems: [],
-  dispatch: () => {}
-}
+  dispatch: () => {},
+};
 
-export const CartContext = createContext<CartContextType>(InitialState)
+export const CartContext = createContext<CartContextType>(InitialState);
 
-export const CartProvider: React.FC<{ children: JSX.Element }> = ({ children }) => {
+export const CartProvider: React.FC<{ children: JSX.Element }> = ({
+  children,
+}) => {
+  const [cartItems, dispatch] = useReducer(CartReducer, InitialState.cartItems);
 
-  const [cartItems, dispatch] = useReducer(CartReducer, InitialState.cartItems) 
-
-  const value={
+  const value = {
     cartItems,
-    dispatch
-  }
+    dispatch,
+  };
 
-  return(
-    <CartContext.Provider value={value}>
-      {children}
-    </CartContext.Provider>
-  )
-}
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+};
 
 // CartItems and dispatch will be provided here to the components (children)
 // CartItems= Is an array of products that are added to the cart
-// dispatch = Is a function for to change the state of the reducer 
+// dispatch = Is a function for to change the state of the reducer
