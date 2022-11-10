@@ -23,31 +23,37 @@ export const FormCheckout = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setShowToast(true);
-    const orderDetails = cartItems.map(({ id, image, ...item }) => item);
-    if (orderDetails.length > 0) {
-      const order: Order = {
-        customer: {
-          name,
-          lastName,
-          email,
-          address,
-        },
-        order_details: orderDetails,
-      };
-      const fetchApi = await postData(order);
-      if (!fetchApi.ok) {
-        notify("No se pudo procesar");
-      } else {
-        notify("Orden realizada");
-        resetValues();
+    // const orderDetails = cartItems.map(({ id, image, ...item }) => item);
+    // if (orderDetails.length > 0) {
+    //   const order: Order = {
+    //     customer: {
+    //       name,
+    //       lastName,
+    //       email,
+    //       address,
+    //     },
+    //     order_details: orderDetails,
+    //   };
+    //   const fetchApi = await postData(order);
+    //   if (!fetchApi.ok) {
+    //     notify("No se pudo procesar");
+    //   } else {
+    //     notify("Orden realizada");
+    //     resetValues();
 
-        dispatch({
-          payload: [],
-          type: "CLEAR",
-        });
-      }
-    } else {
-      notify("No se puede procesar orden sin compras");
+    //     dispatch({
+    //       payload: [],
+    //       type: "CLEAR",
+    //     });
+    //   }
+    // } else {
+      // }
+    if(!cartItems.length){
+      notify("There are no products to process");
+    }else if(name && lastName && email && address){
+      notify("Order processed");
+    }else{
+      notify("Missing data");
     }
     setTimeout(()=> setShowToast(false),5000)
   };
