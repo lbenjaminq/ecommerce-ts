@@ -12,25 +12,25 @@ export const CartReducer = (state: CartItem[], action: CartActionReducer) => {
               amount: item.amount + 1,
             };
           }
-          return item
+          return item;
         });
       } else {
         const { id, title, image, price } = action.payload;
         return [...state, { id, title, image, price, amount: 1 }];
       }
-      // [ITEM1,ITEM2,ITEM3]
+    // [ITEM1,ITEM2,ITEM3]
     case "REMOVE":
-        const filterProduct = state.reduce((acc,item)=>{
-          if(item.id===action.payload){
-            if(item.amount <= 1) return acc
-            else return [...acc,{...item,amount:item.amount -1}]
-          }else{
-            return [...acc,item]
-          }
-        },[] as CartItem[])
-        return filterProduct
+      const filterProduct = state.reduce((acc, item) => {
+        if (item.id === action.payload) {
+          if (item.amount <= 1) return acc;
+          else return [...acc, { ...item, amount: item.amount - 1 }];
+        } else {
+          return [...acc, item];
+        }
+      }, [] as CartItem[]);
+      return filterProduct;
     case "REMOVE_ALL":
-      return state.filter((item)=> item.id !== action.payload);
+      return state.filter((item) => item.id !== action.payload);
     case "CLEAR":
       return [];
     default:

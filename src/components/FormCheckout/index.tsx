@@ -15,14 +15,13 @@ const initialState = {
 const notify = (msj: string) => toast(msj);
 
 export const FormCheckout = () => {
+  const [showToast, setShowToast] = useState(false);
   const { cartItems, dispatch } = useContext(CartContext);
   const { name, lastName, email, address, handleChange, resetValues } =
     useForm<Customer>(initialState);
-  const [showToast, setShowToast] = useState(false);
   //HACER EL USEFORM
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setShowToast(true);
     // const orderDetails = cartItems.map(({ id, image, ...item }) => item);
     // if (orderDetails.length > 0) {
     //   const order: Order = {
@@ -48,12 +47,14 @@ export const FormCheckout = () => {
     //   }
     // } else {
       // }
+      setShowToast(true);
     if(!cartItems.length){
-      notify("There are no products to process");
+      notify("❌ There are no products to process");
+      // 
     }else if(name && lastName && email && address){
-      notify("Order processed");
+      notify("✔ Order processed");
     }else{
-      notify("Missing data");
+      notify("❌ Missing data");
     }
     setTimeout(()=> setShowToast(false),5000)
   };
