@@ -1,0 +1,6 @@
+.gradient{
+  width: 100%;
+  padding-top: 5%;
+  background: rgb(240,212,177);
+  background: linear-gradient(180deg, rgba(240,212,177,1) 20%, rgba(255,255,255,1) 100%);
+}
