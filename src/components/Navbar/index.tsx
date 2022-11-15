@@ -27,7 +27,7 @@ export const NavbarComponent: React.FC<Props> = ({ handleShow }) => {
             size={"2x"}
             style={{ cursor: "pointer",marginRight:"0.2%"}}
             onClick={handleShow}
-            color="black"
+            color="white"
           />
           <Badge bg="dark">{getProductTotal(cartItems)}</Badge>
         </Navbar.Brand>
@@ -38,6 +38,7 @@ export const NavbarComponent: React.FC<Props> = ({ handleShow }) => {
 
 const Brand = {
   cursor:"pointer",
+  color:"white",
   fontWeight:"bold",
   fontSize:"2rem",
   fontFamily:"'JetBrains Mono', sans-serif"

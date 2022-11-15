@@ -2,8 +2,9 @@
   width: 100%;
   height: calc(100vh - 70px);
   display: flex;
-  justify-content: space-between;
-  color: black;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 .image{
@@ -19,11 +20,13 @@
 
 .content{
   width: 70%;  
-  background-color: #f9d6ab;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .subcontent{
@@ -41,31 +44,6 @@
   font-family: Archivo Black;
   height: fit-content;
   width: 100%;
-}
-
-.contImage{
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f9d6ab;
-}
-
-.productImage{
-  width: 500px;
-  animation: myAnim 2s ease 0s 1 normal forwards;
-}
-
-@keyframes myAnim {
-	0% {
-		opacity: 0;
-		transform: translateX(150px);
-	}
-
-	100% {
-		opacity: 1;
-		transform: translateX(0);
-	}
 }
 
 @media screen and (max-width:1400px){
@@ -138,3 +116,9 @@
   }
 }
 
+
+/* prueba */
+.prueba{
+  height: 100vh;
+  width: 100%;
+}

@@ -56,7 +56,7 @@ const Product: React.FC<Props> = ({ product, handleAddToCart }) => {
             fontFamily: "JetBrains Mono",
           }}
         >
-          <strong>Precio: ${product.price} USD</strong>
+          <strong>Price: ${product.price} USD</strong>
           <button
             onClick={() => handleAddToCart(product)}
             className={style.Button}

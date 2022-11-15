@@ -8,9 +8,6 @@ export const Home: React.FC<{}> = () => {
   return (
     <div>
       <Landing/>
-      <div className={style.gradient}>
-        <h1 style={{textAlign:"center",fontSize:"5rem"}}>SALES</h1>
-      </div>
       <ListProducts/>
     </div>
     )
